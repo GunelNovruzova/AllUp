@@ -1,0 +1,29 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1>Product Delete</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="~/assets/images/product/@Model.MainImage" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@Model.Title</h5>
+                <h5 class="card-title">@Model.Price</h5>
+                <h5 class="card-title">@Model.DiscountPrice</h5>
+                <h5 class="card-title">@Model.Brand.Name</h5>
+                <h5 class="card-title">@Model.Category.Name</h5>
+                <h5 class="card-title">@string.Join(", ",Model.ProductTags.Select(x=>x.Tag.Name))</h5>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <a class="btn btn-primary" asp-action="Index" asp-route-status="@ViewBag.Status" asp-route-page="@ViewBag.PageIndex">Go To List</a>
+            <a class="btn btn-danger" asp-action="DeleteProduct" asp-route-status="@ViewBag.Status" asp-route-page="@ViewBag.PageIndex" asp-route-id="@Model.Id">Delete</a>
+        </div>
+    </div>
+</div>
